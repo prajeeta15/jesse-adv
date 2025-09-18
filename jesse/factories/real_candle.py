@@ -1,12 +1,13 @@
 import time
 import logging
 import requests
+import jesse.helpers as jh
 import numpy as np
 from typing import List, Optional, Tuple
 from datetime import datetime, timedelta
 
 from binance.client import Client as BinanceClient
-from kucoin.market import market as KucoinMarketClient
+from kucoin.market import Market as KucoinMarketClient
 from jesse import exchanges
 
 # Configure logging
@@ -14,8 +15,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Load API keys securely from environment variables
-BINANCE_API_KEY = exchanges.env("BINANCE_API_KEY")
-BINANCE_SECRET = exchanges.env("BINANCE_SECRET")
+BINANCE_API_KEY = jh.get_config("env.BINANCE_API_KEY")
+BINANCE_SECRET = jh.get_config("env.BINANCE_SECRET")
 
 # Initialize clients with error handling
 try:
