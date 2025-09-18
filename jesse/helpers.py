@@ -1224,7 +1224,7 @@ def validate_cwd() -> None:
 
 def has_live_trade_plugin() -> bool:
     try:
-        import jesse_live
+        import jesse
     except ModuleNotFoundError:
         return False
     return True
