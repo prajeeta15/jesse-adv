@@ -1,13 +1,13 @@
 import time
 import logging
 import requests
-import jesse.helpers as jh
 import numpy as np
+import jesse.helpers as jh
 from typing import List, Optional, Tuple
 from datetime import datetime, timedelta
 
 from binance.client import Client as BinanceClient
-from kucoin.market import Market as KucoinMarketClient
+from kucoin.market import market as KucoinMarketClient
 from jesse import exchanges
 
 # Configure logging
@@ -30,6 +30,8 @@ except Exception as e:
 
 try:
     kucoin_client = KucoinMarketClient()
+    symbols = kucoin_client.get_symbol_list()
+    print(f"number of markets on kucoin: {len(symbols)}")
 except Exception as e:
     logger.error(f"Failed to initialize KuCoin client: {e}")
     kucoin_client = None
