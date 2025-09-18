@@ -6,7 +6,7 @@ from typing import List, Optional, Tuple
 from datetime import datetime, timedelta
 
 from binance.client import Client as BinanceClient
-from kucoin.client import Market as KucoinMarketClient
+from kucoin.market import market as KucoinMarketClient
 from jesse import exchanges
 
 # Configure logging
